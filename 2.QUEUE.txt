@@ -1,0 +1,39 @@
+from queue import Queue
+def main():
+    max_size = int(input("Enter the maximum size of the queue: "))
+    q = Queue(maxsize=max_size)
+    while True:
+        print("\nQueue Operations:")
+        print("1. Enqueue (Add an element)")
+        print("2. Dequeue (Remove an element)")
+        print("3. Display Queue")
+        print("4. Check if Queue is Empty")
+        print("5. Check if Queue is Full")
+        print("6. Exit")
+        choice = input("Enter your choice (1-6): ")
+        if choice == '1':
+            if q.full():
+                print("Queue is full! Cannot add more elements.")
+            else:
+                element = input("Enter the element to add: ")
+                q.put(element)
+                print(f"Enqueued: {element}")
+        elif choice == '2':
+            if q.empty():
+                print("Queue is empty! Nothing to remove.")
+            else:
+                dequeued_element = q.get()
+                print(f"Dequeued: {dequeued_element}")        
+        elif choice == '3':
+            print("Current Queue:", list(q.queue))      
+        elif choice == '4':
+            print("Is the queue empty?", q.empty())
+        elif choice == '5':
+            print("Is the queue full?", q.full())  
+        elif choice == '6':
+            print("Exiting program. Goodbye!")
+            break
+        else:
+            print("Invalid choice! Please enter a number between 1 and 6.")
+if __name__ == "__main__":
+    main()
